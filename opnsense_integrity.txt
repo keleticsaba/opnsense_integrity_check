@@ -44,6 +44,9 @@ Id Refs Address                Size Name
 27    1 0xffffffff8325c000     2140 ng_tcpmss.ko
 28    1 0xffffffff8325f000     4850 nullfs.ko
 
+/boot-on kívülről behúzott kernel modul check:
+kldstat -v | grep "filename" | grep -v "/boot/kernel"
+
 kldstat -v > kernel_modules.baseline
 
 Bootstrap:
