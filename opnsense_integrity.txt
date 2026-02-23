@@ -1,0 +1,13 @@
+# Check checksums of ALL installed packages
+pkg check -sa
+
+# List trusted fingerprints
+opnsense-verify -l   
+
+# Full mtree baseline
+mtree -c -p / > full_system.spec
+Baseline check:
+mtree -p /usr/local < /root/baseline.spec
+
+Bootstrep:
+opnsense-bootstrap
