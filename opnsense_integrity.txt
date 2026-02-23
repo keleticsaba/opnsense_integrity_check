@@ -9,5 +9,42 @@ mtree -c -p / > full_system.spec
 Baseline check:
 mtree -p /usr/local < /root/baseline.spec
 
-Bootstrep:
+#Kernel modulok:
+kldstat
+
+kldstat baseleine nálam (25.7.11_9)
+root@OPNsense:~ # kldstat
+Id Refs Address                Size Name
+ 1   63 0xffffffff80200000  216fb00 kernel
+ 2    1 0xffffffff82371000     fb90 carp.ko
+ 3    1 0xffffffff82381000    16650 if_lagg.ko
+ 4    2 0xffffffff82398000     3558 if_infiniband.ko
+ 5    1 0xffffffff8239c000     ed60 if_bridge.ko
+ 6    2 0xffffffff823ab000     8990 bridgestp.ko
+ 7    1 0xffffffff823b4000    11ac8 pfsync.ko
+ 8    3 0xffffffff823c6000    90b58 pf.ko
+ 9    1 0xffffffff82457000     4be0 if_enc.ko
+10    1 0xffffffff8245c000     3c10 pflog.ko
+11    1 0xffffffff82460000     aa30 if_gre.ko
+12    1 0xffffffff8246b000    1e280 opensolaris.ko
+13    1 0xffffffff8248a000   5e9300 zfs.ko
+14    1 0xffffffff83220000     3220 intpm.ko
+15    1 0xffffffff83224000     2178 smbus.ko
+16    1 0xffffffff83227000     3160 amdtemp.ko
+17    1 0xffffffff8322b000     2138 amdsmn.ko
+18    1 0xffffffff8322e000     3908 ng_socket.ko
+19    8 0xffffffff83232000     abb8 netgraph.ko
+20    1 0xffffffff8323d000     4414 ng_mppc.ko
+21    1 0xffffffff83242000     20b8 rc4.ko
+22    1 0xffffffff83245000     23f8 ng_iface.ko
+23    1 0xffffffff83248000     6208 ng_ppp.ko
+24    1 0xffffffff8324f000     2140 ng_tee.ko
+25    1 0xffffffff83252000     31e0 ng_ether.ko
+26    1 0xffffffff83256000     5300 ng_pppoe.ko
+27    1 0xffffffff8325c000     2140 ng_tcpmss.ko
+28    1 0xffffffff8325f000     4850 nullfs.ko
+
+kldstat -v > kernel_modules.baseline
+
+Bootstrap:
 opnsense-bootstrap
